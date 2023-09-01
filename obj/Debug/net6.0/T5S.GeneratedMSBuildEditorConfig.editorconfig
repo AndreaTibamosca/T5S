@@ -9,57 +9,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = T5S
 build_property.RootNamespace = T5S
-build_property.ProjectDir = C:\Users\Andrea\Documents\UNIVERSIDAD\SEPTIMO SEMESTRE\PROGRAMACION\T5S\T5S\
+build_property.ProjectDir = C:\Users\HEIDY\Documents\GitHub\T5S\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Andrea\Documents\UNIVERSIDAD\SEPTIMO SEMESTRE\PROGRAMACION\T5S\T5S
+build_property.MSBuildProjectDirectory = C:\Users\HEIDY\Documents\GitHub\T5S
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/T5S/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VDVTXFZpZXdzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/TutorMateriums/Create.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/TutorMateriums/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JNYXRlcml1bXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/TutorMateriums/Delete.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/TutorMateriums/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JNYXRlcml1bXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/TutorMateriums/Details.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/TutorMateriums/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JNYXRlcml1bXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/TutorMateriums/Edit.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/TutorMateriums/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JNYXRlcml1bXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/TutorMateriums/Index.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/TutorMateriums/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JNYXRlcml1bXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/Tutors/Create.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/Tutors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/Tutors/Delete.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/Tutors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/Tutors/Details.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/Tutors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/Tutors/Edit.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/Tutors/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/Documents/UNIVERSIDAD/SEPTIMO SEMESTRE/PROGRAMACION/T5S/T5S/Views/Tutors/Index.cshtml]
+[C:/Users/HEIDY/Documents/GitHub/T5S/Views/Tutors/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHV0b3JzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
