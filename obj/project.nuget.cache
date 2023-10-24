@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m4crXwA6JYjcbo5jEXi9jAAhOGbaEBozI66yDzYMqpKoR4xCRYlLpocR6Vo9WfwmvoKn8j1AnwB6//fMWttCLA==",
+  "dgSpecHash": "leO1sSaPy6uFmjHPHmf8G3DTNbNLpfzb5W7qJnML4UCUydDK5ZBkFQKEFlpz9W1XK9caIBscSal+V1k9WkCaew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andrea\\Documents\\UNIVERSIDAD\\SEPTIMO SEMESTRE\\PROGRAMACION\\T5S\\T5S\\T5S.csproj",
+  "projectFilePath": "C:\\Users\\Andrea\\source\\repos\\T5S\\T5S.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andrea\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Andrea\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

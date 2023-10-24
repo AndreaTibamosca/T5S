@@ -4,6 +4,17 @@ using T5S.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+      policy =>
+      {
+          policy.WithOrigins("http://localhost:4200"
+                  ).AllowAnyHeader()
+                           .AllowAnyMethod();
+      });
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -27,5 +38,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors();
 
 app.Run();
