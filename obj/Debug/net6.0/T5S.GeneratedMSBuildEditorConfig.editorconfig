@@ -9,33 +9,33 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = T5S
 build_property.RootNamespace = T5S
-build_property.ProjectDir = C:\Users\Andrea\source\repos\T5S\
+build_property.ProjectDir = C:\Users\User\source\repos\T5S\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Andrea\source\repos\T5S
+build_property.MSBuildProjectDirectory = C:\Users\User\source\repos\T5S
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Andrea/source/repos/T5S/Views/Calendarios/Create.cshtml]
+[C:/Users/User/source/repos/T5S/Views/Calendarios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsZW5kYXJpb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/source/repos/T5S/Views/Calendarios/Delete.cshtml]
+[C:/Users/User/source/repos/T5S/Views/Calendarios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsZW5kYXJpb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/source/repos/T5S/Views/Calendarios/Details.cshtml]
+[C:/Users/User/source/repos/T5S/Views/Calendarios/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsZW5kYXJpb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/source/repos/T5S/Views/Calendarios/Edit.cshtml]
+[C:/Users/User/source/repos/T5S/Views/Calendarios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsZW5kYXJpb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/source/repos/T5S/Views/Calendarios/Index.cshtml]
+[C:/Users/User/source/repos/T5S/Views/Calendarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsZW5kYXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Andrea/source/repos/T5S/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/User/source/repos/T5S/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
