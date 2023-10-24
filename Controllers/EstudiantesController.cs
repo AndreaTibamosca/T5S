@@ -22,7 +22,7 @@ namespace T5S.Controllers
         }
 
         // GET: api/Estudiantes
-        //Cambio
+        //Cambios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EstudiantesMV>>> GetEstudiantes()
         {
