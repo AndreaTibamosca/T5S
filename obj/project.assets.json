@@ -1404,6 +1404,7 @@
           }
         }
       },
+<<<<<<< Updated upstream
       "Microsoft.EntityFrameworkCore.Sqlite/6.0.21": {
         "type": "package",
         "dependencies": {
@@ -1438,6 +1439,11 @@
       "Microsoft.EntityFrameworkCore.SqlServer/7.0.10": {
         "type": "package",
         "dependencies": {
+=======
+      "Microsoft.EntityFrameworkCore.SqlServer/7.0.10": {
+        "type": "package",
+        "dependencies": {
+>>>>>>> Stashed changes
           "Microsoft.Data.SqlClient": "5.0.2",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.10"
         },
@@ -5807,6 +5813,7 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
+<<<<<<< Updated upstream
     "Microsoft.EntityFrameworkCore.Sqlite/6.0.21": {
       "sha512": "iAs1F5gxEQRRGNHDKJ6ZtoSbOAWcjdk+mABEIy2vRLeACp7xBPdQRQdJnENmxykkBgOVef73RpU3xVdDcn8Omg==",
       "type": "package",
@@ -5837,6 +5844,11 @@
     "Microsoft.EntityFrameworkCore.SqlServer/7.0.10": {
       "sha512": "qRMzze1QbKa2vhlhjTxwjhJUMCI4qVDFWQCRq9Pdgf9mC+xLz0ZT/4ALEa0oZRicGzPZAqIIhKrHNAjgD4GsAQ==",
       "type": "package",
+=======
+    "Microsoft.EntityFrameworkCore.SqlServer/7.0.10": {
+      "sha512": "qRMzze1QbKa2vhlhjTxwjhJUMCI4qVDFWQCRq9Pdgf9mC+xLz0ZT/4ALEa0oZRicGzPZAqIIhKrHNAjgD4GsAQ==",
+      "type": "package",
+>>>>>>> Stashed changes
       "path": "microsoft.entityframeworkcore.sqlserver/7.0.10",
       "files": [
         ".nupkg.metadata",
@@ -11914,30 +11926,49 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.10",
+<<<<<<< Updated upstream
       "Microsoft.EntityFrameworkCore.Sqlite >= 6.0.21",
+=======
+>>>>>>> Stashed changes
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.10",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.16",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
   "packageFolders": {
+<<<<<<< Updated upstream
     "C:\\Users\\Andrea\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\HEIDY\\.nuget\\packages\\": {},
+>>>>>>> Stashed changes
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< Updated upstream
       "projectUniqueName": "C:\\Users\\Andrea\\Documents\\UNIVERSIDAD\\SEPTIMO SEMESTRE\\PROGRAMACION\\T5S\\T5S\\T5S.csproj",
       "projectName": "T5S",
       "projectPath": "C:\\Users\\Andrea\\Documents\\UNIVERSIDAD\\SEPTIMO SEMESTRE\\PROGRAMACION\\T5S\\T5S\\T5S.csproj",
       "packagesPath": "C:\\Users\\Andrea\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Andrea\\Documents\\UNIVERSIDAD\\SEPTIMO SEMESTRE\\PROGRAMACION\\T5S\\T5S\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj",
+      "projectName": "T5S",
+      "projectPath": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj",
+      "packagesPath": "C:\\Users\\HEIDY\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\obj\\",
+>>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< Updated upstream
         "C:\\Users\\Andrea\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\HEIDY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> Stashed changes
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11946,8 +11977,11 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< Updated upstream
         "C:\\Program Files\\dotnet\\library-packs": {},
         "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+=======
+>>>>>>> Stashed changes
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11969,10 +12003,13 @@
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[7.0.10, )"
+<<<<<<< Updated upstream
           },
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[6.0.21, )"
+=======
+>>>>>>> Stashed changes
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -12008,7 +12045,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< Updated upstream
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> Stashed changes
       }
     }
   }
