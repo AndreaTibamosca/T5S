@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrea\\source\\repos\\T5S\\T5S.csproj": {}
+    "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrea\\source\\repos\\T5S\\T5S.csproj": {
+    "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrea\\source\\repos\\T5S\\T5S.csproj",
+        "projectUniqueName": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj",
         "projectName": "T5S",
-        "projectPath": "C:\\Users\\Andrea\\source\\repos\\T5S\\T5S.csproj",
-        "packagesPath": "C:\\Users\\Andrea\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrea\\source\\repos\\T5S\\obj\\",
+        "projectPath": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj",
+        "packagesPath": "C:\\Users\\HEIDY\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Andrea\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HEIDY\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,8 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -88,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
