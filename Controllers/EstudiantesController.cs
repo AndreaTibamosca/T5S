@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelViews;
 
 namespace T5S.Controllers
 {
@@ -21,14 +22,27 @@ namespace T5S.Controllers
         }
 
         // GET: api/Estudiantes
+        //Cambios
+        //Diego
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Estudiante>>> GetEstudiantes()
+        public async Task<ActionResult<IEnumerable<EstudiantesMV>>> GetEstudiantes()
         {
           if (_context.Estudiantes == null)
           {
               return NotFound();
           }
-            return await _context.Estudiantes.ToListAsync();
+            var query = from Estudiantes in await _context.Estudiantes.ToListAsync()
+                        join Login in await _context.Logins.ToListAsync() on Estudiantes.IdLogin equals Login.IdLogin
+                        select new EstudiantesMV
+                        {
+                         NombreEst  = Estudiantes.NombreEst,
+                         ApellidoEst  = Estudiantes.ApellidoEst, 
+                         TipoDocumento  = Estudiantes.TipoDocumentoEst,
+                         Correo  = Estudiantes.CorreoEst,
+                         Celular = Estudiantes.CelularEst,
+                        };
+            return query.ToList();
+            //return await _context.Estudiantes.ToListAsync();
         }
 
         // GET: api/Estudiantes/5

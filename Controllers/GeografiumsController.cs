@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelsView;
 
 namespace T5S.Controllers
 {
@@ -22,13 +23,23 @@ namespace T5S.Controllers
 
         // GET: api/Geografiums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Geografium>>> GetGeografia()
+        public async Task<ActionResult<IEnumerable<GeografiaMV>>> GetGeografia()
         {
           if (_context.Geografia == null)
           {
               return NotFound();
           }
-            return await _context.Geografia.ToListAsync();
+            var query = from Geografium in await _context.Geografia.ToListAsync()
+                        join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on Geografium.IdGeografia equals ResevarTutorium.IdGeografia
+                        select new GeografiaMV
+                        {
+                            Id= Geografium.IdGeografia,
+                            Ciudad = Geografium.Ciudad,
+                            Pais = Geografium.Pais,
+                            Barrio = ResevarTutorium.Barrio
+                        };
+            return query.ToList();
+
         }
 
         // GET: api/Geografiums/5

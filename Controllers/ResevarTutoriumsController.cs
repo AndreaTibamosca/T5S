@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelsView;
 
 namespace T5S.Controllers
 {
@@ -22,13 +24,38 @@ namespace T5S.Controllers
 
         // GET: api/ResevarTutoriums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ResevarTutorium>>> GetResevarTutoria()
+        public async Task<ActionResult<IEnumerable<ReservaTutoriaMV>>> GetResevarTutoria()
         {
           if (_context.ResevarTutoria == null)
           {
               return NotFound();
           }
-            return await _context.ResevarTutoria.ToListAsync();
+            var query = from ResevarTutorium in await _context.ResevarTutoria.ToListAsync()
+                        join Tutor in await _context.Tutors.ToListAsync() on ResevarTutorium.IdTutor equals Tutor.IdTutor                    
+                        join Estudiante in await _context.Estudiantes.ToListAsync() on ResevarTutorium.IdEstudiante equals Estudiante.IdEstudiante
+                        join Calendario in await _context.Calendarios.ToListAsync() on ResevarTutorium.IdCalendario equals Calendario.IdCalendario
+                        join Materia in await _context.Materia.ToListAsync() on ResevarTutorium.IdMateria equals Materia.IdMateria
+                        join FormaPago in await _context.FormaPagos.ToListAsync() on ResevarTutorium.IdPago equals FormaPago.IdPago
+                        join Geografium in await _context.Geografia.ToListAsync() on ResevarTutorium.IdGeografia equals Geografium.IdGeografia
+                        select new ReservaTutoriaMV
+                        {
+                            Id = ResevarTutorium.IdReserva,
+                            FechaTutoria = ResevarTutorium.FechaTutoria,
+                            HoraTutoria = ResevarTutorium.HoraTutoria,
+                            CantidadHoras = ResevarTutorium.CantidadHoras,
+                            Localidad = ResevarTutorium.Localidad,
+                            Barrio = ResevarTutorium.Barrio,
+                            DireccionTutoria = ResevarTutorium.DireccionTutoria,
+                            TipoTutoria = ResevarTutorium.TipoTutoria,
+                            DescripcionTutoria = ResevarTutorium.DescripcionTutoria,
+                            NombreTutor = Tutor.NombreTutor,
+                            NombreEstudiante = Estudiante.NombreEst,
+                            Fecha = Calendario.FechaCalendario,
+                            NombreMateria = Materia.NombreMateria,
+                            ValoraPagar = FormaPago.ValoraPagar,
+                            Ciudad = Geografium.Ciudad,
+                        };
+            return query.ToList();
         }
 
         // GET: api/ResevarTutoriums/5

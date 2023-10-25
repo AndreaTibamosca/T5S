@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelViews;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace T5S.Controllers
 {
@@ -22,14 +24,25 @@ namespace T5S.Controllers
 
         // GET: api/Logins
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Login>>> GetLogins()
+        public async Task<ActionResult<IEnumerable<LoginMV>>> GetLogins()
         {
-          if (_context.Logins == null)
-          {
-              return NotFound();
-          }
-            return await _context.Logins.ToListAsync();
-        }
+            if (_context.Logins == null)
+            {
+                return NotFound();
+            }
+            var query = from Login in await _context.Logins.ToListAsync()
+                        join Estudiantes in await _context.Estudiantes.ToListAsync() on Login.IdLogin equals Estudiantes.IdLogin
+                        select new LoginMV
+                        {
+                            Nombre = Estudiantes.NombreEst,
+                            Nombreusuario = Login.User,
+                            Password = Login.Password,
+                        };
+            return query.ToList();
+                        }
+
+            //return await _context.Logins.ToListAsync();
+        
 
         // GET: api/Logins/5
         [HttpGet("{id}")]
