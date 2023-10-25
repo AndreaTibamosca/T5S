@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelsView;
 
 namespace T5S.Controllers
 {
@@ -22,13 +23,22 @@ namespace T5S.Controllers
 
         // GET: api/Repositorios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Repositorio>>> GetRepositorios()
+        public async Task<ActionResult<IEnumerable<RepositorioMV>>> GetRepositorios()
         {
           if (_context.Repositorios == null)
           {
               return NotFound();
           }
-            return await _context.Repositorios.ToListAsync();
+            var query = from Repositorio in await _context.Repositorios.ToListAsync()
+                        join Tutor in await _context.Tutors.ToListAsync() on Repositorio.IdTutor equals Tutor.IdTutor
+                        select new RepositorioMV
+                        {
+                            Id = Repositorio.IdRepositorio,
+                            NombreRepositorio = Repositorio.IdNombreRepositorio,
+                            NombreTutor = Tutor.NombreTutor,
+                            MediosRepositorio = Repositorio.MediosRepositorio,
+                        };
+            return query.ToList();
         }
 
         // GET: api/Repositorios/5
