@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj": {}
   },
   "projects": {
@@ -13,29 +12,12 @@
         "projectPath": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\T5S.csproj",
         "packagesPath": "C:\\Users\\HEIDY\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\HEIDY\\Documents\\GitHub\\T5S\\obj\\",
-=======
-    "C:\\Users\\User\\source\\repos\\T5S\\T5S.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\User\\source\\repos\\T5S\\T5S.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\T5S\\T5S.csproj",
-        "projectName": "T5S",
-        "projectPath": "C:\\Users\\User\\source\\repos\\T5S\\T5S.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\T5S\\obj\\",
->>>>>>> 40116fc9bb7fc72498906bf1dc1bf29f99fe5ba5
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\HEIDY\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 40116fc9bb7fc72498906bf1dc1bf29f99fe5ba5
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,10 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-<<<<<<< HEAD
-=======
-          "C:\\Program Files\\dotnet\\library-packs": {},
->>>>>>> 40116fc9bb7fc72498906bf1dc1bf29f99fe5ba5
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,21 +46,17 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-<<<<<<< HEAD
               "version": "[7.0.10, )"
-=======
-              "version": "[7.0.12, )"
->>>>>>> 40116fc9bb7fc72498906bf1dc1bf29f99fe5ba5
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.12, )"
+              "version": "[7.0.10, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -108,11 +82,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> 40116fc9bb7fc72498906bf1dc1bf29f99fe5ba5
         }
       }
     }
