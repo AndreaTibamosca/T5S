@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.MoldelsView;
 
 namespace T5S.Controllers
 {
-    public class CalendariosController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CalendariosController : ControllerBase
     {
         private readonly T5sContext _context;
 
@@ -18,145 +21,131 @@ namespace T5S.Controllers
             _context = context;
         }
 
-        // GET: Calendarios
-        public async Task<IActionResult> Index()
+        // GET: api/Calendarios
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CalendarioMV>>> GetCalendarios()
         {
-              return _context.Calendarios != null ? 
-                          View(await _context.Calendarios.ToListAsync()) :
-                          Problem("Entity set 'T5sContext.Calendarios'  is null.");
-        }
-
-        // GET: Calendarios/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Calendarios == null)
+            if (_context.Calendarios == null)
             {
                 return NotFound();
             }
+            var query = from Calendario in await _context.Calendarios.ToListAsync()
+                        join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on Calendario.IdCalendario equals ResevarTutorium.IdCalendario
+                        select new CalendarioMV
+                        {
+                            Id = Calendario.IdCalendario,
+                            Fecha = Calendario.FechaCalendario,
+                            Descripcion = Calendario.DescripcionCalendario,
+                            Barrio = ResevarTutorium.Barrio,
+                            TipoTutoria = ResevarTutorium.TipoTutoria,
 
-            var calendario = await _context.Calendarios
-                .FirstOrDefaultAsync(m => m.IdCalendario == id);
-            if (calendario == null)
+                        };
+            return query.ToList();
+
+            //return await _context.Calendarios.ToListAsync();
+        }
+
+        // GET: api/Calendarios/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Calendario>> GetCalendario(int id)
+        {
+            if (_context.Calendarios == null)
             {
                 return NotFound();
             }
-
-            return View(calendario);
-        }
-
-        // GET: Calendarios/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Calendarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCalendario,FechaCalendario,DescripcionCalendario")] Calendario calendario)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(calendario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(calendario);
-        }
-
-        // GET: Calendarios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Calendarios == null)
-            {
-                return NotFound();
-            }
-
             var calendario = await _context.Calendarios.FindAsync(id);
+
             if (calendario == null)
             {
                 return NotFound();
             }
-            return View(calendario);
+
+            return calendario;
         }
 
-        // POST: Calendarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCalendario,FechaCalendario,DescripcionCalendario")] Calendario calendario)
+        // PUT: api/Calendarios/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutCalendario(int id, Calendario calendario)
         {
             if (id != calendario.IdCalendario)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (ModelState.IsValid)
+            _context.Entry(calendario).State = EntityState.Modified;
+
+            try
             {
-                try
-                {
-                    _context.Update(calendario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CalendarioExists(calendario.IdCalendario))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
             }
-            return View(calendario);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CalendarioExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // GET: Calendarios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Calendarios == null)
-            {
-                return NotFound();
-            }
-
-            var calendario = await _context.Calendarios
-                .FirstOrDefaultAsync(m => m.IdCalendario == id);
-            if (calendario == null)
-            {
-                return NotFound();
-            }
-
-            return View(calendario);
-        }
-
-        // POST: Calendarios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        // POST: api/Calendarios
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Calendario>> PostCalendario(Calendario calendario)
         {
             if (_context.Calendarios == null)
             {
                 return Problem("Entity set 'T5sContext.Calendarios'  is null.");
             }
-            var calendario = await _context.Calendarios.FindAsync(id);
-            if (calendario != null)
+            _context.Calendarios.Add(calendario);
+            try
             {
-                _context.Calendarios.Remove(calendario);
+                await _context.SaveChangesAsync();
             }
-            
+            catch (DbUpdateException)
+            {
+                if (CalendarioExists(calendario.IdCalendario))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtAction("GetCalendario", new { id = calendario.IdCalendario }, calendario);
+        }
+
+        // DELETE: api/Calendarios/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCalendario(int id)
+        {
+            if (_context.Calendarios == null)
+            {
+                return NotFound();
+            }
+            var calendario = await _context.Calendarios.FindAsync(id);
+            if (calendario == null)
+            {
+                return NotFound();
+            }
+
+            _context.Calendarios.Remove(calendario);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return NoContent();
         }
 
         private bool CalendarioExists(int id)
         {
-          return (_context.Calendarios?.Any(e => e.IdCalendario == id)).GetValueOrDefault();
+            return (_context.Calendarios?.Any(e => e.IdCalendario == id)).GetValueOrDefault();
         }
     }
 }

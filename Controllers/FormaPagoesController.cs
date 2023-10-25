@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.MoldelsView;
 
 namespace T5S.Controllers
 {
@@ -22,23 +23,37 @@ namespace T5S.Controllers
 
         // GET: api/FormaPagoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FormaPago>>> GetFormaPagos()
+        public async Task<ActionResult<IEnumerable<FormaPagoMV>>> GetFormaPagos()
         {
-          if (_context.FormaPagos == null)
-          {
-              return NotFound();
-          }
-            return await _context.FormaPagos.ToListAsync();
+            if (_context.FormaPagos == null)
+            {
+                return NotFound();
+            }
+
+            var query = from FormaPago in await _context.FormaPagos.ToListAsync()
+                        join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on FormaPago.IdPago equals ResevarTutorium.IdPago
+                        select new FormaPagoMV
+                        {
+                            Id = FormaPago.IdPago,
+                            TipoPago = FormaPago.TipoPago,
+                            ValoraPagar = FormaPago.ValoraPagar,
+                            Barrio = ResevarTutorium.Barrio,
+                            DescripcionTutoria = ResevarTutorium.DescripcionTutoria,
+
+                        };
+            return query.ToList();
+
+            // return await _context.FormaPagos.ToListAsync();
         }
 
         // GET: api/FormaPagoes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<FormaPago>> GetFormaPago(int id)
         {
-          if (_context.FormaPagos == null)
-          {
-              return NotFound();
-          }
+            if (_context.FormaPagos == null)
+            {
+                return NotFound();
+            }
             var formaPago = await _context.FormaPagos.FindAsync(id);
 
             if (formaPago == null)
@@ -85,10 +100,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<FormaPago>> PostFormaPago(FormaPago formaPago)
         {
-          if (_context.FormaPagos == null)
-          {
-              return Problem("Entity set 'T5sContext.FormaPagos'  is null.");
-          }
+            if (_context.FormaPagos == null)
+            {
+                return Problem("Entity set 'T5sContext.FormaPagos'  is null.");
+            }
             _context.FormaPagos.Add(formaPago);
             try
             {
