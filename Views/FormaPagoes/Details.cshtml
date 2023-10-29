@@ -1,4 +1,4 @@
-﻿@model T5S.Models.Calendario
+﻿@model T5S.Models.FormaPago
 
 @{
     ViewData["Title"] = "Details";
@@ -7,20 +7,20 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Calendario</h4>
+    <h4>FormaPago</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCalendario)
+            @Html.DisplayNameFor(model => model.TipoPago)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCalendario)
+            @Html.DisplayFor(model => model.TipoPago)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DescripcionCalendario)
+            @Html.DisplayNameFor(model => model.ValoraPagar)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DescripcionCalendario)
+            @Html.DisplayFor(model => model.ValoraPagar)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Estado)
@@ -31,6 +31,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdCalendario">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.IdPago">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

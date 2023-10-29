@@ -39,6 +39,7 @@ namespace T5S.Controllers
                             ValoraPagar = FormaPago.ValoraPagar,
                             Barrio = ResevarTutorium.Barrio,
                             DescripcionTutoria = ResevarTutorium.DescripcionTutoria,
+                            Estado = FormaPago.Estado
 
                         };
             return query.ToList();

@@ -11,6 +11,8 @@ public partial class Login
 
     public string Password { get; set; } = null!;
 
+    public string? Estado { get; set; }
+
     public virtual Estudiante IdLoginNavigation { get; set; } = null!;
 
     public virtual Tutor? Tutor { get; set; }

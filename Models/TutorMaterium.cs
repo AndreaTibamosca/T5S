@@ -11,6 +11,8 @@ public partial class TutorMaterium
 
     public int IdTutor { get; set; }
 
+    public string? Estado { get; set; }
+
     public virtual Materium IdTutorMateriaNavigation { get; set; } = null!;
 
     public virtual Tutor? Tutor { get; set; }

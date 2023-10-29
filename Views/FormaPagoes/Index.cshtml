@@ -1,4 +1,4 @@
-﻿@model IEnumerable<T5S.Models.Calendario>
+﻿@model IEnumerable<T5S.Models.FormaPago>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FechaCalendario)
+                @Html.DisplayNameFor(model => model.TipoPago)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescripcionCalendario)
+                @Html.DisplayNameFor(model => model.ValoraPagar)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
@@ -28,18 +28,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaCalendario)
+                @Html.DisplayFor(modelItem => item.TipoPago)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DescripcionCalendario)
+                @Html.DisplayFor(modelItem => item.ValoraPagar)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCalendario">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCalendario">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCalendario">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdPago">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPago">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPago">Delete</a>
             </td>
         </tr>
 }

@@ -13,5 +13,7 @@ public partial class Repositorio
 
     public string MediosRepositorio { get; set; } = null!;
 
+    public string? Estado { get; set; }
+
     public virtual Tutor IdRepositorioNavigation { get; set; } = null!;
 }

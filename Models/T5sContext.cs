@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using T5S.MoldelsView;
 
 namespace T5S.Models;
 
@@ -34,11 +35,10 @@ public partial class T5sContext : DbContext
     public virtual DbSet<Tutor> Tutors { get; set; }
 
     public virtual DbSet<TutorMaterium> TutorMateria { get; set; }
-    public object Estudiante { get; internal set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-QO3RBTB;Database=T5S;Trusted_Connection=True;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=USER\\SQLDIEGO; Database=T5S; Trusted_Connection=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -52,6 +52,10 @@ public partial class T5sContext : DbContext
             entity.Property(e => e.DescripcionCalendario)
                 .HasMaxLength(20)
                 .IsFixedLength();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.FechaCalendario).HasColumnType("date");
         });
 
@@ -71,6 +75,10 @@ public partial class T5sContext : DbContext
             entity.Property(e => e.DireccionEst)
                 .HasMaxLength(50)
                 .IsFixedLength();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.FechaNacimientoEst).HasColumnType("date");
             entity.Property(e => e.IdLogin).HasColumnName("Id_login");
             entity.Property(e => e.NombreEst)
@@ -94,6 +102,10 @@ public partial class T5sContext : DbContext
             entity.ToTable("FormaPago");
 
             entity.Property(e => e.IdPago).ValueGeneratedNever();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.TipoPago)
                 .HasMaxLength(100)
                 .IsFixedLength();
@@ -107,6 +119,10 @@ public partial class T5sContext : DbContext
             entity.Property(e => e.Ciudad)
                 .HasMaxLength(100)
                 .IsFixedLength();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.Pais)
                 .HasMaxLength(100)
                 .IsFixedLength();
@@ -121,6 +137,10 @@ public partial class T5sContext : DbContext
             entity.Property(e => e.IdLogin)
                 .ValueGeneratedNever()
                 .HasColumnName("Id_login");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.Password)
                 .HasMaxLength(50)
                 .IsFixedLength();
@@ -142,6 +162,10 @@ public partial class T5sContext : DbContext
             entity.Property(e => e.CostoMateria)
                 .HasMaxLength(100)
                 .IsFixedLength();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.NombreMateria)
                 .HasMaxLength(100)
                 .IsFixedLength();
@@ -157,6 +181,10 @@ public partial class T5sContext : DbContext
             entity.ToTable("Repositorio");
 
             entity.Property(e => e.IdRepositorio).ValueGeneratedNever();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.IdNombreRepositorio)
                 .HasMaxLength(100)
                 .IsFixedLength();
@@ -242,6 +270,10 @@ public partial class T5sContext : DbContext
             entity.Property(e => e.DocumentosTutor)
                 .HasMaxLength(100)
                 .IsFixedLength();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
             entity.Property(e => e.ExperienciaTutor)
                 .HasMaxLength(100)
                 .IsFixedLength();
@@ -281,6 +313,10 @@ public partial class T5sContext : DbContext
             entity.HasKey(e => e.IdTutorMateria);
 
             entity.Property(e => e.IdTutorMateria).ValueGeneratedNever();
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
 
             entity.HasOne(d => d.IdTutorMateriaNavigation).WithOne(p => p.TutorMaterium)
                 .HasForeignKey<TutorMaterium>(d => d.IdTutorMateria)
@@ -292,4 +328,6 @@ public partial class T5sContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public DbSet<T5S.MoldelsView.CalendarioMV>? CalendarioMV { get; set; }
 }

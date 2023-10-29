@@ -11,5 +11,7 @@ public partial class FormaPago
 
     public int ValoraPagar { get; set; }
 
+    public string? Estado { get; set; }
+
     public virtual ResevarTutorium? ResevarTutorium { get; set; }
 }
