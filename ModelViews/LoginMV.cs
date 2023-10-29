@@ -10,7 +10,7 @@
 
         public string Nombre { get; set; } = null!;
 
-
+        public string Estado { get; set; } = null!;
 
 
     }

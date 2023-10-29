@@ -12,5 +12,7 @@ namespace T5S.ModelsView
 
         public string MediosRepositorio { get; set; } = null!;
 
+        public string Estado { get; set; } = null!;
+
     }
 }

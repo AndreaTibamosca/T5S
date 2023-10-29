@@ -1,0 +1,99 @@
+﻿@model T5S.Models.Tutor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Tutor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdTutor" />
+            <div class="form-group">
+                <label asp-for="NombreTutor" class="control-label"></label>
+                <input asp-for="NombreTutor" class="form-control" />
+                <span asp-validation-for="NombreTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoTutor" class="control-label"></label>
+                <input asp-for="ApellidoTutor" class="form-control" />
+                <span asp-validation-for="ApellidoTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimientoTutor" class="control-label"></label>
+                <input asp-for="FechaNacimientoTutor" class="form-control" />
+                <span asp-validation-for="FechaNacimientoTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoDocumentoTutor" class="control-label"></label>
+                <input asp-for="TipoDocumentoTutor" class="form-control" />
+                <span asp-validation-for="TipoDocumentoTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroDocumentoTutor" class="control-label"></label>
+                <input asp-for="NumeroDocumentoTutor" class="form-control" />
+                <span asp-validation-for="NumeroDocumentoTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CelularTutor" class="control-label"></label>
+                <input asp-for="CelularTutor" class="form-control" />
+                <span asp-validation-for="CelularTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoTutor" class="control-label"></label>
+                <input asp-for="CorreoTutor" class="form-control" />
+                <span asp-validation-for="CorreoTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireccionTutor" class="control-label"></label>
+                <input asp-for="DireccionTutor" class="form-control" />
+                <span asp-validation-for="DireccionTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreUsuarioTutor" class="control-label"></label>
+                <input asp-for="NombreUsuarioTutor" class="form-control" />
+                <span asp-validation-for="NombreUsuarioTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordTutor" class="control-label"></label>
+                <input asp-for="PasswordTutor" class="form-control" />
+                <span asp-validation-for="PasswordTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExperienciaTutor" class="control-label"></label>
+                <input asp-for="ExperienciaTutor" class="form-control" />
+                <span asp-validation-for="ExperienciaTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentosTutor" class="control-label"></label>
+                <input asp-for="DocumentosTutor" class="form-control" />
+                <span asp-validation-for="DocumentosTutor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdLogin" class="control-label"></label>
+                <input asp-for="IdLogin" class="form-control" />
+                <span asp-validation-for="IdLogin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
