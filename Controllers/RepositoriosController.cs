@@ -25,10 +25,10 @@ namespace T5S.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RepositorioMV>>> GetRepositorios()
         {
-          if (_context.Repositorios == null)
-          {
-              return NotFound();
-          }
+            if (_context.Repositorios == null)
+            {
+                return NotFound();
+            }
             var query = from Repositorio in await _context.Repositorios.ToListAsync()
                         join Tutor in await _context.Tutors.ToListAsync() on Repositorio.IdTutor equals Tutor.IdTutor
                         select new RepositorioMV
@@ -37,6 +37,7 @@ namespace T5S.Controllers
                             NombreRepositorio = Repositorio.IdNombreRepositorio,
                             NombreTutor = Tutor.NombreTutor,
                             MediosRepositorio = Repositorio.MediosRepositorio,
+                            Estado = Repositorio.Estado
                         };
             return query.ToList();
         }
@@ -45,10 +46,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Repositorio>> GetRepositorio(int id)
         {
-          if (_context.Repositorios == null)
-          {
-              return NotFound();
-          }
+            if (_context.Repositorios == null)
+            {
+                return NotFound();
+            }
             var repositorio = await _context.Repositorios.FindAsync(id);
 
             if (repositorio == null)
@@ -95,10 +96,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Repositorio>> PostRepositorio(Repositorio repositorio)
         {
-          if (_context.Repositorios == null)
-          {
-              return Problem("Entity set 'T5sContext.Repositorios'  is null.");
-          }
+            if (_context.Repositorios == null)
+            {
+                return Problem("Entity set 'T5sContext.Repositorios'  is null.");
+            }
             _context.Repositorios.Add(repositorio);
             try
             {

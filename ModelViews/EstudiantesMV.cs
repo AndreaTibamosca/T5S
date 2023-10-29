@@ -15,6 +15,7 @@ namespace T5S.ModelViews
         public int Celular { get; set; }
         public string Correo { get; set; }
 
+        public string Estado { get; set; } = null!;
 
     }
 

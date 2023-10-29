@@ -1,0 +1,59 @@
+﻿@model IEnumerable<T5S.Models.Repositorio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNombreRepositorio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MediosRepositorio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRepositorioNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNombreRepositorio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MediosRepositorio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRepositorioNavigation.IdTutor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdRepositorio">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdRepositorio">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdRepositorio">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

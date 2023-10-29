@@ -25,18 +25,19 @@ namespace T5S.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GeografiaMV>>> GetGeografia()
         {
-          if (_context.Geografia == null)
-          {
-              return NotFound();
-          }
+            if (_context.Geografia == null)
+            {
+                return NotFound();
+            }
             var query = from Geografium in await _context.Geografia.ToListAsync()
                         join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on Geografium.IdGeografia equals ResevarTutorium.IdGeografia
                         select new GeografiaMV
                         {
-                            Id= Geografium.IdGeografia,
+                            Id = Geografium.IdGeografia,
                             Ciudad = Geografium.Ciudad,
                             Pais = Geografium.Pais,
-                            Barrio = ResevarTutorium.Barrio
+                            Barrio = ResevarTutorium.Barrio,
+                            Estado = Geografium.Estado
                         };
             return query.ToList();
 
@@ -46,10 +47,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Geografium>> GetGeografium(int id)
         {
-          if (_context.Geografia == null)
-          {
-              return NotFound();
-          }
+            if (_context.Geografia == null)
+            {
+                return NotFound();
+            }
             var geografium = await _context.Geografia.FindAsync(id);
 
             if (geografium == null)
@@ -96,10 +97,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Geografium>> PostGeografium(Geografium geografium)
         {
-          if (_context.Geografia == null)
-          {
-              return Problem("Entity set 'T5sContext.Geografia'  is null.");
-          }
+            if (_context.Geografia == null)
+            {
+                return Problem("Entity set 'T5sContext.Geografia'  is null.");
+            }
             _context.Geografia.Add(geografium);
             try
             {

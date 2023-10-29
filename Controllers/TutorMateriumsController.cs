@@ -24,10 +24,10 @@ namespace T5S.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TutorMaterium>>> GetTutorMateria()
         {
-          if (_context.TutorMateria == null)
-          {
-              return NotFound();
-          }
+            if (_context.TutorMateria == null)
+            {
+                return NotFound();
+            }
             return await _context.TutorMateria.ToListAsync();
         }
 
@@ -35,10 +35,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TutorMaterium>> GetTutorMaterium(int id)
         {
-          if (_context.TutorMateria == null)
-          {
-              return NotFound();
-          }
+            if (_context.TutorMateria == null)
+            {
+                return NotFound();
+            }
             var tutorMaterium = await _context.TutorMateria.FindAsync(id);
 
             if (tutorMaterium == null)
@@ -85,10 +85,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<TutorMaterium>> PostTutorMaterium(TutorMaterium tutorMaterium)
         {
-          if (_context.TutorMateria == null)
-          {
-              return Problem("Entity set 'T5sContext.TutorMateria'  is null.");
-          }
+            if (_context.TutorMateria == null)
+            {
+                return Problem("Entity set 'T5sContext.TutorMateria'  is null.");
+            }
             _context.TutorMateria.Add(tutorMaterium);
             try
             {

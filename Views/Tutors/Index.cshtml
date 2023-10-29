@@ -1,0 +1,131 @@
+﻿@model IEnumerable<T5S.Models.Tutor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApellidoTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimientoTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDocumentoTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroDocumentoTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CelularTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorreoTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DireccionTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuarioTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PasswordTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExperienciaTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentosTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdLogin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTutor1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTutor2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTutorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimientoTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDocumentoTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroDocumentoTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelularTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuarioTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExperienciaTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentosTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLogin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTutor1.IdLogin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTutor2.IdTutorMateria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTutorNavigation.IdCalendario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdTutor">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdTutor">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdTutor">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

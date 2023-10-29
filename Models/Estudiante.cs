@@ -29,6 +29,8 @@ public partial class Estudiante
 
     public int IdLogin { get; set; }
 
+    public string? Estado { get; set; }
+
     public virtual Login? Login { get; set; }
 
     public virtual ResevarTutorium? ResevarTutorium { get; set; }

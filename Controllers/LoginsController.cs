@@ -37,21 +37,22 @@ namespace T5S.Controllers
                             Nombre = Estudiantes.NombreEst,
                             Nombreusuario = Login.User,
                             Password = Login.Password,
+                            Estado = Login.Estado
                         };
             return query.ToList();
-                        }
+        }
 
-            //return await _context.Logins.ToListAsync();
-        
+        //return await _context.Logins.ToListAsync();
+
 
         // GET: api/Logins/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Login>> GetLogin(int id)
         {
-          if (_context.Logins == null)
-          {
-              return NotFound();
-          }
+            if (_context.Logins == null)
+            {
+                return NotFound();
+            }
             var login = await _context.Logins.FindAsync(id);
 
             if (login == null)
@@ -98,10 +99,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Login>> PostLogin(Login login)
         {
-          if (_context.Logins == null)
-          {
-              return Problem("Entity set 'T5sContext.Logins'  is null.");
-          }
+            if (_context.Logins == null)
+            {
+                return Problem("Entity set 'T5sContext.Logins'  is null.");
+            }
             _context.Logins.Add(login);
             try
             {

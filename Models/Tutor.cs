@@ -33,6 +33,8 @@ public partial class Tutor
 
     public int IdLogin { get; set; }
 
+    public string? Estado { get; set; }
+
     public virtual Login IdTutor1 { get; set; } = null!;
 
     public virtual TutorMaterium IdTutor2 { get; set; } = null!;

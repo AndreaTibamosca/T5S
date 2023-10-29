@@ -11,5 +11,7 @@ public partial class Geografium
 
     public string Pais { get; set; } = null!;
 
+    public string? Estado { get; set; }
+
     public virtual ResevarTutorium? ResevarTutorium { get; set; }
 }

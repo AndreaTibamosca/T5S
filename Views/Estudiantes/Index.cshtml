@@ -1,0 +1,101 @@
+﻿@model IEnumerable<T5S.Models.Estudiante>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApellidoEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimientoEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDocumentoEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroDocumentoEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CelularEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorreoEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DireccionEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuarioEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PasswordEst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdLogin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimientoEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDocumentoEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroDocumentoEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelularEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuarioEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordEst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLogin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEstudiante">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdEstudiante">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdEstudiante">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

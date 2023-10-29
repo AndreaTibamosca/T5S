@@ -38,6 +38,7 @@ namespace T5S.Controllers
                             Descripcion = Calendario.DescripcionCalendario,
                             Barrio = ResevarTutorium.Barrio,
                             TipoTutoria = ResevarTutorium.TipoTutoria,
+                            Estado = Calendario.Estado
 
                         };
             return query.ToList();

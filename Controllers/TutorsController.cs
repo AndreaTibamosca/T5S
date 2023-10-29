@@ -24,10 +24,10 @@ namespace T5S.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tutor>>> GetTutors()
         {
-          if (_context.Tutors == null)
-          {
-              return NotFound();
-          }
+            if (_context.Tutors == null)
+            {
+                return NotFound();
+            }
             return await _context.Tutors.ToListAsync();
         }
 
@@ -35,10 +35,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Tutor>> GetTutor(int id)
         {
-          if (_context.Tutors == null)
-          {
-              return NotFound();
-          }
+            if (_context.Tutors == null)
+            {
+                return NotFound();
+            }
             var tutor = await _context.Tutors.FindAsync(id);
 
             if (tutor == null)
@@ -85,10 +85,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Tutor>> PostTutor(Tutor tutor)
         {
-          if (_context.Tutors == null)
-          {
-              return Problem("Entity set 'T5sContext.Tutors'  is null.");
-          }
+            if (_context.Tutors == null)
+            {
+                return Problem("Entity set 'T5sContext.Tutors'  is null.");
+            }
             _context.Tutors.Add(tutor);
             try
             {

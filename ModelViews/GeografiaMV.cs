@@ -9,5 +9,7 @@
         public string Pais { get; set; } = null!;
 
         public string Barrio { get; set; } = null!;
+
+        public string Estado { get; set; } = null!;
     }
 }
