@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelsVie;
 using T5S.ModelsView;
 
 namespace T5S.Controllers
@@ -31,6 +32,7 @@ namespace T5S.Controllers
             }
             var query = from Geografium in await _context.Geografia.ToListAsync()
                         join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on Geografium.IdGeografia equals ResevarTutorium.IdGeografia
+                        where Geografium.Estado == "Activo"
                         select new GeografiaMV
                         {
                             Id = Geografium.IdGeografia,
