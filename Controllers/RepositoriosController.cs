@@ -31,6 +31,7 @@ namespace T5S.Controllers
             }
             var query = from Repositorio in await _context.Repositorios.ToListAsync()
                         join Tutor in await _context.Tutors.ToListAsync() on Repositorio.IdTutor equals Tutor.IdTutor
+                        where Repositorio.Estado == "Activo"
                         select new RepositorioMV
                         {
                             Id = Repositorio.IdRepositorio,
