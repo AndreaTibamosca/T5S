@@ -21,7 +21,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<T5sContext>(options => options.UseSqlServer("Server=USER\\SQLDIEGO;Database=T5S; Trusted_Connection=true;MultipleActiveResultSets=true"));
+builder.Services.AddDbContext<T5sContext>(options => options.UseSqlServer("Server=DESKTOP-0Q4IDFC\\ANDRMEL1;Database=T5S; Trusted_Connection=true;MultipleActiveResultSets=true; TrustServerCertificate=true"));
 
 var app = builder.Build();
 

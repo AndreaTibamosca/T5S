@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelsVie;
 
 namespace T5S.Controllers
 {
@@ -22,13 +23,27 @@ namespace T5S.Controllers
 
         // GET: api/Materiums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Materium>>> GetMateria()
+        public async Task<ActionResult<IEnumerable<MateriaMV>>> GetMateria()
         {
             if (_context.Materia == null)
             {
                 return NotFound();
             }
-            return await _context.Materia.ToListAsync();
+            var query = from Materia in await _context.Materia.ToListAsync()
+                        where Materia.Estado == "Activo"
+                        select new MateriaMV
+
+                        {
+
+                            Id = Materia.IdMateria,
+                            NombreMateria = Materia.NombreMateria,
+                            CostoMateria = Materia.CostoMateria,
+                            PruebaMateria = Materia.PruebaMateria,
+                            Estado = Materia.Estado
+                        };
+
+            return query.ToList();
+
         }
 
         // GET: api/Materiums/5
