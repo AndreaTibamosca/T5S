@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using T5S.Models;
 using T5S.ModelViews;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -22,6 +23,39 @@ namespace T5S.Controllers
             _context = context;
         }
 
+        [HttpGet("{User},{Password}")]
+
+        public async Task<ActionResult<LoginMV>> Login(string User, string Password)
+        {
+            var login = await _context.Logins.FirstOrDefaultAsync(x => x.User.Equals(User) && x.Password.Equals(Password));
+            if (login == null)
+            {
+               return NotFound();
+            }
+            var estudiante = await _context.Estudiantes.FirstOrDefaultAsync(e => e.IdLogin == login.IdLogin);
+
+            if (estudiante == null)
+            {
+                return NotFound();
+            }
+
+            var loginMV = new LoginMV
+            {
+                Nombreusuario = login.User,
+                Password = login.Password,
+
+                // Datos del estudiante
+                Nombre = estudiante.NombreEst,
+                Apellido = estudiante.ApellidoEst,
+                TipoDocumento = estudiante.TipoDocumentoEst,
+                NumeroDocumento = estudiante.NumeroDocumentoEst.ToString(),
+                Estado = login.Estado
+             
+            };
+
+            return Ok(loginMV);
+        }
+
         // GET: api/Logins
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LoginMV>>> GetLogins()
@@ -37,7 +71,10 @@ namespace T5S.Controllers
                             Nombre = Estudiantes.NombreEst,
                             Nombreusuario = Login.User,
                             Password = Login.Password,
-                            Estado = Login.Estado
+                            Estado = Login.Estado,
+                            Apellido = Estudiantes.ApellidoEst,
+                            TipoDocumento = Estudiantes.TipoDocumentoEst,
+                            NumeroDocumento = Estudiantes.NumeroDocumentoEst.ToString()
                         };
             return query.ToList();
         }
