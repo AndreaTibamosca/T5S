@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.ModelsVie;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,13 +23,30 @@ namespace T5S.Controllers
 
         // GET: api/TutorMateriums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TutorMaterium>>> GetTutorMateria()
+        public async Task<ActionResult<IEnumerable<TutorMateriaMV>>> GetTutorMateria()
         {
             if (_context.TutorMateria == null)
             {
                 return NotFound();
             }
-            return await _context.TutorMateria.ToListAsync();
+
+           
+            var query = from TutorMateria in await _context.TutorMateria.ToListAsync()
+                        join Tutors in await _context.Tutors.ToListAsync() on TutorMateria.IdTutorMateria equals Tutors.IdTutor
+                        join Materia in await _context.Materia.ToListAsync() on TutorMateria.IdMateria equals Materia.IdMateria
+                        where Materia.Estado == "Activo"
+                        select new TutorMateriaMV
+
+                        {
+
+                            NombreTutor = Tutors.NombreTutor,
+                            NombreMateria = Materia.NombreMateria,
+                            Estado = TutorMateria.Estado
+                        };
+
+            return query.ToList();
+
+            //return await _context.TutorMateria.ToListAsync();
         }
 
         // GET: api/TutorMateriums/5
