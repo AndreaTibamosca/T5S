@@ -17,6 +17,8 @@
 
         public string Estado { get; set; } = null!;
 
+        public int Id { get; set;} = 0;
+
 
     }
 }

@@ -49,7 +49,8 @@ namespace T5S.Controllers
                 Apellido = estudiante.ApellidoEst,
                 TipoDocumento = estudiante.TipoDocumentoEst,
                 NumeroDocumento = estudiante.NumeroDocumentoEst.ToString(),
-                Estado = login.Estado
+                Estado = login.Estado,
+                Id = login.IdLogin
              
             };
 
