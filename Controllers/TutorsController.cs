@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.MoldelsView;
 
 namespace T5S.Controllers
 {
@@ -22,14 +23,32 @@ namespace T5S.Controllers
 
         // GET: api/Tutors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tutor>>> GetTutors()
+        public async Task<ActionResult<IEnumerable<TutorMV>>> GetTutors()
         {
             if (_context.Tutors == null)
             {
                 return NotFound();
+
             }
-            return await _context.Tutors.ToListAsync();
+            var query = from Tutors in await _context.Tutors.ToListAsync()
+                        join Materia in await _context.Materia.ToListAsync() on Tutors.IdTutor equals Materia.IdMateria
+                        where Materia.Estado == "Activo"
+                        select new TutorMV
+                        {
+                            IdTutor = Tutors.IdTutor,
+                            NumeroDocumentoTutor = Tutors.NumeroDocumentoTutor,
+                            NombreTutor = Tutors.NombreTutor,
+                            ApellidoTutor = Tutors.ApellidoTutor,
+                            CorreoTutor = Tutors.CorreoTutor,
+                            NombreMateria = Materia.NombreMateria,
+                            CostoMateria = Materia.CostoMateria,
+                            Estado = Tutors.Estado
+                        };
+
+            return query.ToList();
+            //return await _context.Tutors.ToListAsync();
         }
+
 
         // GET: api/Tutors/5
         [HttpGet("{id}")]
