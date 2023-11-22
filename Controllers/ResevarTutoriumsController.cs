@@ -26,12 +26,12 @@ namespace T5S.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ReservaTutoriaMV>>> GetResevarTutoria()
         {
-          if (_context.ResevarTutoria == null)
-          {
-              return NotFound();
-          }
+            if (_context.ResevarTutoria == null)
+            {
+                return NotFound();
+            }
             var query = from ResevarTutorium in await _context.ResevarTutoria.ToListAsync()
-                        join Tutor in await _context.Tutors.ToListAsync() on ResevarTutorium.IdTutor equals Tutor.IdTutor                    
+                        join Tutor in await _context.Tutors.ToListAsync() on ResevarTutorium.IdTutor equals Tutor.IdTutor
                         join Estudiante in await _context.Estudiantes.ToListAsync() on ResevarTutorium.IdEstudiante equals Estudiante.IdEstudiante
                         join Calendario in await _context.Calendarios.ToListAsync() on ResevarTutorium.IdCalendario equals Calendario.IdCalendario
                         join Materia in await _context.Materia.ToListAsync() on ResevarTutorium.IdMateria equals Materia.IdMateria
@@ -62,10 +62,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ResevarTutorium>> GetResevarTutorium(int id)
         {
-          if (_context.ResevarTutoria == null)
-          {
-              return NotFound();
-          }
+            if (_context.ResevarTutoria == null)
+            {
+                return NotFound();
+            }
             var resevarTutorium = await _context.ResevarTutoria.FindAsync(id);
 
             if (resevarTutorium == null)
@@ -112,10 +112,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<ResevarTutorium>> PostResevarTutorium(ResevarTutorium resevarTutorium)
         {
-          if (_context.ResevarTutoria == null)
-          {
-              return Problem("Entity set 'T5sContext.ResevarTutoria'  is null.");
-          }
+            if (_context.ResevarTutoria == null)
+            {
+                return Problem("Entity set 'T5sContext.ResevarTutoria'  is null.");
+            }
             _context.ResevarTutoria.Add(resevarTutorium);
             try
             {

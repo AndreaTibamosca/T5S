@@ -27,19 +27,20 @@ namespace T5S.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EstudiantesMV>>> GetEstudiantes()
         {
-          if (_context.Estudiantes == null)
-          {
-              return NotFound();
-          }
+            if (_context.Estudiantes == null)
+            {
+                return NotFound();
+            }
             var query = from Estudiantes in await _context.Estudiantes.ToListAsync()
                         join Login in await _context.Logins.ToListAsync() on Estudiantes.IdLogin equals Login.IdLogin
                         select new EstudiantesMV
                         {
-                         NombreEst  = Estudiantes.NombreEst,
-                         ApellidoEst  = Estudiantes.ApellidoEst, 
-                         TipoDocumento  = Estudiantes.TipoDocumentoEst,
-                         Correo  = Estudiantes.CorreoEst,
-                         Celular = Estudiantes.CelularEst,
+                            NombreEst = Estudiantes.NombreEst,
+                            ApellidoEst = Estudiantes.ApellidoEst,
+                            TipoDocumento = Estudiantes.TipoDocumentoEst,
+                            Correo = Estudiantes.CorreoEst,
+                            Celular = Estudiantes.CelularEst,
+                            Estado = Estudiantes.Estado
                         };
             return query.ToList();
             //return await _context.Estudiantes.ToListAsync();
@@ -49,10 +50,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Estudiante>> GetEstudiante(int id)
         {
-          if (_context.Estudiantes == null)
-          {
-              return NotFound();
-          }
+            if (_context.Estudiantes == null)
+            {
+                return NotFound();
+            }
             var estudiante = await _context.Estudiantes.FindAsync(id);
 
             if (estudiante == null)
@@ -99,10 +100,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Estudiante>> PostEstudiante(Estudiante estudiante)
         {
-          if (_context.Estudiantes == null)
-          {
-              return Problem("Entity set 'T5sContext.Estudiantes'  is null.");
-          }
+            if (_context.Estudiantes == null)
+            {
+                return Problem("Entity set 'T5sContext.Estudiantes'  is null.");
+            }
             _context.Estudiantes.Add(estudiante);
             try
             {

@@ -1,0 +1,54 @@
+﻿@model T5S.Models.Materium
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Materium</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdMateria" />
+            <div class="form-group">
+                <label asp-for="NombreMateria" class="control-label"></label>
+                <input asp-for="NombreMateria" class="form-control" />
+                <span asp-validation-for="NombreMateria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostoMateria" class="control-label"></label>
+                <input asp-for="CostoMateria" class="form-control" />
+                <span asp-validation-for="CostoMateria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PruebaMateria" class="control-label"></label>
+                <input asp-for="PruebaMateria" class="form-control" />
+                <span asp-validation-for="PruebaMateria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTutorMateria" class="control-label"></label>
+                <input asp-for="IdTutorMateria" class="form-control" />
+                <span asp-validation-for="IdTutorMateria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

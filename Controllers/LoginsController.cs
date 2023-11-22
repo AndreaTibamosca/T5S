@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using T5S.Models;
 using T5S.ModelViews;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -22,6 +23,40 @@ namespace T5S.Controllers
             _context = context;
         }
 
+        [HttpGet("{User},{Password}")]
+
+        public async Task<ActionResult<LoginMV>> Login(string User, string Password)
+        {
+            var login = await _context.Logins.FirstOrDefaultAsync(x => x.User.Equals(User) && x.Password.Equals(Password));
+            if (login == null)
+            {
+               return NotFound();
+            }
+            var estudiante = await _context.Estudiantes.FirstOrDefaultAsync(e => e.IdLogin == login.IdLogin);
+
+            if (estudiante == null)
+            {
+                return NotFound();
+            }
+
+            var loginMV = new LoginMV
+            {
+                Nombreusuario = login.User,
+                Password = login.Password,
+
+                // Datos del estudiantes
+                Nombre = estudiante.NombreEst,
+                Apellido = estudiante.ApellidoEst,
+                TipoDocumento = estudiante.TipoDocumentoEst,
+                NumeroDocumento = estudiante.NumeroDocumentoEst.ToString(),
+                Estado = login.Estado,
+                Id = login.IdLogin
+             
+            };
+
+            return Ok(loginMV);
+        }
+
         // GET: api/Logins
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LoginMV>>> GetLogins()
@@ -37,21 +72,25 @@ namespace T5S.Controllers
                             Nombre = Estudiantes.NombreEst,
                             Nombreusuario = Login.User,
                             Password = Login.Password,
+                            Estado = Login.Estado,
+                            Apellido = Estudiantes.ApellidoEst,
+                            TipoDocumento = Estudiantes.TipoDocumentoEst,
+                            NumeroDocumento = Estudiantes.NumeroDocumentoEst.ToString()
                         };
             return query.ToList();
-                        }
+        }
 
-            //return await _context.Logins.ToListAsync();
-        
+        //return await _context.Logins.ToListAsync();
+
 
         // GET: api/Logins/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Login>> GetLogin(int id)
         {
-          if (_context.Logins == null)
-          {
-              return NotFound();
-          }
+            if (_context.Logins == null)
+            {
+                return NotFound();
+            }
             var login = await _context.Logins.FindAsync(id);
 
             if (login == null)
@@ -98,10 +137,10 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Login>> PostLogin(Login login)
         {
-          if (_context.Logins == null)
-          {
-              return Problem("Entity set 'T5sContext.Logins'  is null.");
-          }
+            if (_context.Logins == null)
+            {
+                return Problem("Entity set 'T5sContext.Logins'  is null.");
+            }
             _context.Logins.Add(login);
             try
             {

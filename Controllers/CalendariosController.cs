@@ -31,6 +31,7 @@ namespace T5S.Controllers
             }
             var query = from Calendario in await _context.Calendarios.ToListAsync()
                         join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on Calendario.IdCalendario equals ResevarTutorium.IdCalendario
+                        where Calendario.Estado == "Activo"
                         select new CalendarioMV
                         {
                             Id = Calendario.IdCalendario,
@@ -38,6 +39,7 @@ namespace T5S.Controllers
                             Descripcion = Calendario.DescripcionCalendario,
                             Barrio = ResevarTutorium.Barrio,
                             TipoTutoria = ResevarTutorium.TipoTutoria,
+                            Estado = Calendario.Estado
 
                         };
             return query.ToList();

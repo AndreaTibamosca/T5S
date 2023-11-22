@@ -13,5 +13,7 @@
 
         public string DescripcionTutoria { get; set; } = null!;
 
+
+        public string Estado { get; set; } = null!;
     }
 }

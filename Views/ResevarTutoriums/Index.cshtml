@@ -1,0 +1,149 @@
+﻿@model IEnumerable<T5S.Models.ResevarTutorium>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaTutoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraTutoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadHoras)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Barrio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DireccionTutoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoTutoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionTutoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstudiante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCalendario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMateria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGeografia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReserva1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReserva2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReserva3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReserva4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReserva5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReservaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaTutoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraTutoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadHoras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barrio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionTutoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoTutoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionTutoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstudiante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCalendario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMateria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGeografia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReserva1.IdEstudiante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReserva2.IdGeografia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReserva3.IdMateria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReserva4.IdPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReserva5.IdTutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReservaNavigation.IdCalendario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdReserva">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdReserva">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdReserva">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
