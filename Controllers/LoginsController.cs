@@ -44,7 +44,7 @@ namespace T5S.Controllers
                 Nombreusuario = login.User,
                 Password = login.Password,
 
-                // Datos del estudiante
+                // Datos del estudiantes
                 Nombre = estudiante.NombreEst,
                 Apellido = estudiante.ApellidoEst,
                 TipoDocumento = estudiante.TipoDocumentoEst,
