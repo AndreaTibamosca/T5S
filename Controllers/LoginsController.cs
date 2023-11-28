@@ -134,6 +134,41 @@ namespace T5S.Controllers
 
         // POST: api/Logins
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+       
+        [HttpPost("{User},{Password}")]
+ public async Task<ActionResult<Login>> PostLogin(string User, string Password)
+        {
+            var register = await _context.Logins.FirstOrDefaultAsync(x => x.User.Equals(User) && x.Password.Equals(Password));
+
+            if (register != null)
+            {
+                return Conflict(); // Conflict si ya existe un login con las mismas credenciales
+            }
+
+            // Obtener el último IdLogin de la base de datos
+            int _ultimoId = _context.Logins.OrderByDescending(u => u.IdLogin).FirstOrDefault()?.IdLogin ?? 0;
+
+            // Crear un nuevo login con el próximo IdLogin
+            var loginMV = new Login
+            {
+                IdLogin = _ultimoId + 1,
+                User = User,
+                Password = Password,
+                Estado = "Activo",
+                IdEstudiante = null
+            };
+
+            // Agregar el nuevo login al contexto y guardar cambios
+            _context.Logins.Add(loginMV);
+ 
+            // Asegurarse de que haya cambios antes de intentar obtener el IdLogin
+            await _context.SaveChangesAsync();
+
+            // Obtener el IdLogin después de guardar cambios
+
+            return Ok(loginMV);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Login>> PostLogin(Login login)
         {
