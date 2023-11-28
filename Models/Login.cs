@@ -15,7 +15,4 @@ public partial class Login
 
     public int? IdEstudiante { get; set; }
 
-    public virtual Estudiante IdLoginNavigation { get; set; } = null!;
-
-    public virtual Tutor? Tutor { get; set; }
 }

@@ -38,7 +38,7 @@ public partial class T5sContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=USER\\SQLDIEGO; Database=T5S; Trusted_Connection=True;");
+        => optionsBuilder.UseSqlServer("Server=HEIDY; Database=T5S; Trusted_Connection=True;TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -148,10 +148,7 @@ public partial class T5sContext : DbContext
                 .HasMaxLength(50)
                 .IsFixedLength();
 
-            entity.HasOne(d => d.IdLoginNavigation).WithOne(p => p.Login)
-                .HasForeignKey<Login>(d => d.IdLogin)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Login_Estudiante");
+
         });
 
         modelBuilder.Entity<Materium>(entity =>
@@ -297,10 +294,6 @@ public partial class T5sContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Tutor_ResevarTutoria");
 
-            entity.HasOne(d => d.IdTutor1).WithOne(p => p.Tutor)
-                .HasForeignKey<Tutor>(d => d.IdTutor)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Tutor_Login");
 
             entity.HasOne(d => d.IdTutor2).WithOne(p => p.Tutor)
                 .HasForeignKey<Tutor>(d => d.IdTutor)
