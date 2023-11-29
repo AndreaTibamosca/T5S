@@ -1183,7 +1183,6 @@ C:\Users\Andrea\Source\Repos\T5S\obj\Debug\net6.0\T5S.genruntimeconfig.cache
 C:\Users\Andrea\Source\Repos\T5S\obj\Debug\net6.0\ref\T5S.dll
 C:\Users\Andrea\Source\Repos\T5S\obj\Debug\net6.0\T5S.RazorAssemblyInfo.cache
 C:\Users\Andrea\Source\Repos\T5S\obj\Debug\net6.0\T5S.RazorAssemblyInfo.cs
-<<<<<<< HEAD
 C:\Users\User\source\repos\T5S\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\User\source\repos\T5S\bin\Debug\net6.0\appsettings.json
 C:\Users\User\source\repos\T5S\bin\Debug\net6.0\T5S.exe
@@ -1778,7 +1777,6 @@ C:\Users\iuser\Documents\GitHub\ProyectoT5S\obj\Debug\net6.0\T5S.csproj.CopyComp
 C:\Users\iuser\Documents\GitHub\ProyectoT5S\obj\Debug\net6.0\T5S.genruntimeconfig.cache
 C:\Users\iuser\Documents\GitHub\ProyectoT5S\obj\Debug\net6.0\ref\T5S.dll
 >>>>>>> 0331945875607defcf14736f670ef52a9296b9e7
-=======
 C:\Users\HEIDY\Documents\GitHub\T5S\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\HEIDY\Documents\GitHub\T5S\bin\Debug\net6.0\appsettings.json
 C:\Users\HEIDY\Documents\GitHub\T5S\bin\Debug\net6.0\T5S.exe
@@ -2076,3 +2074,4 @@ C:\Users\HEIDY\Documents\GitHub\T5S\obj\Debug\net6.0\T5S.pdb
 C:\Users\HEIDY\Documents\GitHub\T5S\obj\Debug\net6.0\T5S.genruntimeconfig.cache
 C:\Users\HEIDY\Documents\GitHub\T5S\obj\Debug\net6.0\ref\T5S.dll
 >>>>>>> 0a94a27f595d2db15c44315f2a84fd7de6146ea5
+C:\Users\User\source\repos\T5S\bin\Debug\net6.0\runtimes\linux-ppc64le\native\libe_sqlite3.so
