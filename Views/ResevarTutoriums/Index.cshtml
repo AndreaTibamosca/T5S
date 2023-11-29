@@ -54,24 +54,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdGeografia)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdReserva1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdReserva2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdReserva3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdReserva4)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdReserva5)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdReservaNavigation)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -119,24 +101,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdGeografia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdReserva1.IdEstudiante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdReserva2.IdGeografia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdReserva3.IdMateria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdReserva4.IdPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdReserva5.IdTutor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdReservaNavigation.IdCalendario)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdReserva">Edit</a> |

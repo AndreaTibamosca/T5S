@@ -7,13 +7,11 @@ public partial class Repositorio
 {
     public int IdRepositorio { get; set; }
 
-    public string IdNombreRepositorio { get; set; } = null!;
+    public string? IdNombreRepositorio { get; set; }
 
     public int IdTutor { get; set; }
 
-    public string MediosRepositorio { get; set; } = null!;
+    public string? MediosRepositorio { get; set; }
 
     public string? Estado { get; set; }
-
-    public virtual Tutor IdRepositorioNavigation { get; set; } = null!;
 }

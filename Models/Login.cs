@@ -7,15 +7,11 @@ public partial class Login
 {
     public int IdLogin { get; set; }
 
-    public string User { get; set; } = null!;
+    public string? User { get; set; }
 
-    public string Password { get; set; } = null!;
+    public string? Password { get; set; }
 
     public string? Estado { get; set; }
 
     public int? IdEstudiante { get; set; }
-
-    public virtual Estudiante IdLoginNavigation { get; set; } = null!;
-
-    public virtual Tutor? Tutor { get; set; }
 }

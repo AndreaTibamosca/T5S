@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
-using T5S.ModelsView;
 
 namespace T5S.Controllers
 {
@@ -23,34 +22,23 @@ namespace T5S.Controllers
 
         // GET: api/Repositorios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RepositorioMV>>> GetRepositorios()
+        public async Task<ActionResult<IEnumerable<Repositorio>>> GetRepositorios()
         {
-            if (_context.Repositorios == null)
-            {
-                return NotFound();
-            }
-            var query = from Repositorio in await _context.Repositorios.ToListAsync()
-                        join Tutor in await _context.Tutors.ToListAsync() on Repositorio.IdTutor equals Tutor.IdTutor
-                        where Repositorio.Estado == "Activo"
-                        select new RepositorioMV
-                        {
-                            Id = Repositorio.IdRepositorio,
-                            NombreRepositorio = Repositorio.IdNombreRepositorio,
-                            NombreTutor = Tutor.NombreTutor,
-                            MediosRepositorio = Repositorio.MediosRepositorio,
-                            Estado = Repositorio.Estado
-                        };
-            return query.ToList();
+          if (_context.Repositorios == null)
+          {
+              return NotFound();
+          }
+            return await _context.Repositorios.ToListAsync();
         }
 
         // GET: api/Repositorios/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Repositorio>> GetRepositorio(int id)
         {
-            if (_context.Repositorios == null)
-            {
-                return NotFound();
-            }
+          if (_context.Repositorios == null)
+          {
+              return NotFound();
+          }
             var repositorio = await _context.Repositorios.FindAsync(id);
 
             if (repositorio == null)
@@ -97,26 +85,12 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Repositorio>> PostRepositorio(Repositorio repositorio)
         {
-            if (_context.Repositorios == null)
-            {
-                return Problem("Entity set 'T5sContext.Repositorios'  is null.");
-            }
+          if (_context.Repositorios == null)
+          {
+              return Problem("Entity set 'T5sContext.Repositorios'  is null.");
+          }
             _context.Repositorios.Add(repositorio);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (RepositorioExists(repositorio.IdRepositorio))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRepositorio", new { id = repositorio.IdRepositorio }, repositorio);
         }

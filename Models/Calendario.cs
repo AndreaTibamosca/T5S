@@ -9,11 +9,7 @@ public partial class Calendario
 
     public DateTime FechaCalendario { get; set; }
 
-    public string DescripcionCalendario { get; set; } = null!;
+    public string? DescripcionCalendario { get; set; }
 
     public string? Estado { get; set; }
-
-    public virtual ResevarTutorium? ResevarTutorium { get; set; }
-
-    public virtual Tutor? Tutor { get; set; }
 }

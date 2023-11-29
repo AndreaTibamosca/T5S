@@ -54,15 +54,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdTutor1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdTutor2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdTutorNavigation)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -110,15 +101,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdTutor1.IdLogin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdTutor2.IdTutorMateria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdTutorNavigation.IdCalendario)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdTutor">Edit</a> |

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Plugins;
 using T5S.Models;
 using T5S.ModelViews;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace T5S.Controllers
 {
@@ -24,73 +22,58 @@ namespace T5S.Controllers
         }
 
         [HttpGet("{User},{Password}")]
-
         public async Task<ActionResult<LoginMV>> Login(string User, string Password)
         {
             var login = await _context.Logins.FirstOrDefaultAsync(x => x.User.Equals(User) && x.Password.Equals(Password));
             if (login == null)
-            {
-               return NotFound();
-            }
-            var estudiante = await _context.Estudiantes.FirstOrDefaultAsync(e => e.IdLogin == login.IdLogin);
-
-            if (estudiante == null)
             {
                 return NotFound();
             }
 
             var loginMV = new LoginMV
             {
-                Nombreusuario = login.User,
+                Usuario = login.User,
                 Password = login.Password,
 
                 // Datos del estudiantes
-                Nombre = estudiante.NombreEst,
-                Apellido = estudiante.ApellidoEst,
-                TipoDocumento = estudiante.TipoDocumentoEst,
-                NumeroDocumento = estudiante.NumeroDocumentoEst.ToString(),
                 Estado = login.Estado,
-                Id = login.IdLogin
-             
+
             };
 
             return Ok(loginMV);
         }
 
         // GET: api/Logins
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LoginMV>>> GetLogins()
         {
-            if (_context.Logins == null)
+            var logins = await _context.Logins
+                .Select(login => new LoginMV
+                {
+                    id = login.IdLogin,
+                    Usuario = login.User,
+                    Password = login.Password,
+                    Estado = login.Estado
+                })
+                .ToListAsync();
+
+            if (logins == null || logins.Count == 0)
             {
                 return NotFound();
             }
-            var query = from Login in await _context.Logins.ToListAsync()
-                        join Estudiantes in await _context.Estudiantes.ToListAsync() on Login.IdLogin equals Estudiantes.IdLogin
-                        select new LoginMV
-                        {
-                            Nombre = Estudiantes.NombreEst,
-                            Nombreusuario = Login.User,
-                            Password = Login.Password,
-                            Estado = Login.Estado,
-                            Apellido = Estudiantes.ApellidoEst,
-                            TipoDocumento = Estudiantes.TipoDocumentoEst,
-                            NumeroDocumento = Estudiantes.NumeroDocumentoEst.ToString()
-                        };
-            return query.ToList();
+
+            return logins;
         }
-
-        //return await _context.Logins.ToListAsync();
-
 
         // GET: api/Logins/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Login>> GetLogin(int id)
         {
-            if (_context.Logins == null)
-            {
-                return NotFound();
-            }
+          if (_context.Logins == null)
+          {
+              return NotFound();
+          }
             var login = await _context.Logins.FindAsync(id);
 
             if (login == null)
@@ -137,26 +120,12 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Login>> PostLogin(Login login)
         {
-            if (_context.Logins == null)
-            {
-                return Problem("Entity set 'T5sContext.Logins'  is null.");
-            }
+          if (_context.Logins == null)
+          {
+              return Problem("Entity set 'T5sContext.Logins'  is null.");
+          }
             _context.Logins.Add(login);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (LoginExists(login.IdLogin))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetLogin", new { id = login.IdLogin }, login);
         }

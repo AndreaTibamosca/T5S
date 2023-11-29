@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
-using T5S.ModelsVie;
-using T5S.ModelsView;
 
 namespace T5S.Controllers
 {
@@ -24,35 +22,23 @@ namespace T5S.Controllers
 
         // GET: api/Geografiums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GeografiaMV>>> GetGeografia()
+        public async Task<ActionResult<IEnumerable<Geografium>>> GetGeografia()
         {
-            if (_context.Geografia == null)
-            {
-                return NotFound();
-            }
-            var query = from Geografium in await _context.Geografia.ToListAsync()
-                        join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on Geografium.IdGeografia equals ResevarTutorium.IdGeografia
-                        where Geografium.Estado == "Activo"
-                        select new GeografiaMV
-                        {
-                            Id = Geografium.IdGeografia,
-                            Ciudad = Geografium.Ciudad,
-                            Pais = Geografium.Pais,
-                            Barrio = ResevarTutorium.Barrio,
-                            Estado = Geografium.Estado
-                        };
-            return query.ToList();
-
+          if (_context.Geografia == null)
+          {
+              return NotFound();
+          }
+            return await _context.Geografia.ToListAsync();
         }
 
         // GET: api/Geografiums/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Geografium>> GetGeografium(int id)
         {
-            if (_context.Geografia == null)
-            {
-                return NotFound();
-            }
+          if (_context.Geografia == null)
+          {
+              return NotFound();
+          }
             var geografium = await _context.Geografia.FindAsync(id);
 
             if (geografium == null)
@@ -99,26 +85,12 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Geografium>> PostGeografium(Geografium geografium)
         {
-            if (_context.Geografia == null)
-            {
-                return Problem("Entity set 'T5sContext.Geografia'  is null.");
-            }
+          if (_context.Geografia == null)
+          {
+              return Problem("Entity set 'T5sContext.Geografia'  is null.");
+          }
             _context.Geografia.Add(geografium);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (GeografiumExists(geografium.IdGeografia))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetGeografium", new { id = geografium.IdGeografia }, geografium);
         }

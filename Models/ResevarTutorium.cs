@@ -13,15 +13,15 @@ public partial class ResevarTutorium
 
     public int CantidadHoras { get; set; }
 
-    public string Localidad { get; set; } = null!;
+    public string? Localidad { get; set; }
 
-    public string Barrio { get; set; } = null!;
+    public string? Barrio { get; set; }
 
-    public string DireccionTutoria { get; set; } = null!;
+    public string? DireccionTutoria { get; set; }
 
-    public string TipoTutoria { get; set; } = null!;
+    public string? TipoTutoria { get; set; }
 
-    public string DescripcionTutoria { get; set; } = null!;
+    public string? DescripcionTutoria { get; set; }
 
     public int? IdTutor { get; set; }
 
@@ -35,15 +35,5 @@ public partial class ResevarTutorium
 
     public int IdGeografia { get; set; }
 
-    public virtual Estudiante IdReserva1 { get; set; } = null!;
-
-    public virtual Geografium IdReserva2 { get; set; } = null!;
-
-    public virtual Materium IdReserva3 { get; set; } = null!;
-
-    public virtual FormaPago IdReserva4 { get; set; } = null!;
-
-    public virtual Tutor IdReserva5 { get; set; } = null!;
-
-    public virtual Calendario IdReservaNavigation { get; set; } = null!;
+    public int? Estado { get; set; }
 }
