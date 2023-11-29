@@ -30,15 +30,12 @@ namespace T5S.Controllers
                 return NotFound();
             }
             var query = from Calendario in await _context.Calendarios.ToListAsync()
-                        join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on Calendario.IdCalendario equals ResevarTutorium.IdCalendario
                         where Calendario.Estado == "Activo"
                         select new CalendarioMV
                         {
                             Id = Calendario.IdCalendario,
                             Fecha = Calendario.FechaCalendario,
                             Descripcion = Calendario.DescripcionCalendario,
-                            Barrio = ResevarTutorium.Barrio,
-                            TipoTutoria = ResevarTutorium.TipoTutoria,
                             Estado = Calendario.Estado
 
                         };
@@ -51,10 +48,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Calendario>> GetCalendario(int id)
         {
-            if (_context.Calendarios == null)
-            {
-                return NotFound();
-            }
+          if (_context.Calendarios == null)
+          {
+              return NotFound();
+          }
             var calendario = await _context.Calendarios.FindAsync(id);
 
             if (calendario == null)
@@ -101,26 +98,12 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Calendario>> PostCalendario(Calendario calendario)
         {
-            if (_context.Calendarios == null)
-            {
-                return Problem("Entity set 'T5sContext.Calendarios'  is null.");
-            }
+          if (_context.Calendarios == null)
+          {
+              return Problem("Entity set 'T5sContext.Calendarios'  is null.");
+          }
             _context.Calendarios.Add(calendario);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (CalendarioExists(calendario.IdCalendario))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCalendario", new { id = calendario.IdCalendario }, calendario);
         }

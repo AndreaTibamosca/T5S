@@ -31,14 +31,11 @@ namespace T5S.Controllers
             }
 
             var query = from FormaPago in await _context.FormaPagos.ToListAsync()
-                        join ResevarTutorium in await _context.ResevarTutoria.ToListAsync() on FormaPago.IdPago equals ResevarTutorium.IdPago
                         select new FormaPagoMV
                         {
                             Id = FormaPago.IdPago,
                             TipoPago = FormaPago.TipoPago,
                             ValoraPagar = FormaPago.ValoraPagar,
-                            Barrio = ResevarTutorium.Barrio,
-                            DescripcionTutoria = ResevarTutorium.DescripcionTutoria,
                             Estado = FormaPago.Estado
 
                         };
@@ -51,10 +48,10 @@ namespace T5S.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<FormaPago>> GetFormaPago(int id)
         {
-            if (_context.FormaPagos == null)
-            {
-                return NotFound();
-            }
+          if (_context.FormaPagos == null)
+          {
+              return NotFound();
+          }
             var formaPago = await _context.FormaPagos.FindAsync(id);
 
             if (formaPago == null)
@@ -101,26 +98,12 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<FormaPago>> PostFormaPago(FormaPago formaPago)
         {
-            if (_context.FormaPagos == null)
-            {
-                return Problem("Entity set 'T5sContext.FormaPagos'  is null.");
-            }
+          if (_context.FormaPagos == null)
+          {
+              return Problem("Entity set 'T5sContext.FormaPagos'  is null.");
+          }
             _context.FormaPagos.Add(formaPago);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (FormaPagoExists(formaPago.IdPago))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetFormaPago", new { id = formaPago.IdPago }, formaPago);
         }

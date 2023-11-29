@@ -8,10 +8,6 @@
 
         public string Descripcion { get; set; } = null!;
 
-        public string Barrio { get; set; } = null!;
-
-        public string TipoTutoria { get; set; } = null!;
-
         public string Estado { get; set; } = null!;
 
     }

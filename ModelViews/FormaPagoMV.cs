@@ -9,11 +9,6 @@
 
         public int ValoraPagar { get; set; }
 
-        public string Barrio { get; set; } = null!;
-
-        public string DescripcionTutoria { get; set; } = null!;
-
-
         public string Estado { get; set; } = null!;
     }
 }

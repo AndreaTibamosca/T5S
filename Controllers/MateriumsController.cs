@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
-using T5S.ModelsVie;
 
 namespace T5S.Controllers
 {
@@ -23,37 +22,23 @@ namespace T5S.Controllers
 
         // GET: api/Materiums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MateriaMV>>> GetMateria()
+        public async Task<ActionResult<IEnumerable<Materium>>> GetMateria()
         {
-            if (_context.Materia == null)
-            {
-                return NotFound();
-            }
-            var query = from Materia in await _context.Materia.ToListAsync()
-                        where Materia.Estado == "Activo"
-                        select new MateriaMV
-
-                        {
-
-                            Id = Materia.IdMateria,
-                            NombreMateria = Materia.NombreMateria,
-                            CostoMateria = Materia.CostoMateria,
-                            PruebaMateria = Materia.PruebaMateria,
-                            Estado = Materia.Estado
-                        };
-
-            return query.ToList();
-
+          if (_context.Materia == null)
+          {
+              return NotFound();
+          }
+            return await _context.Materia.ToListAsync();
         }
 
         // GET: api/Materiums/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Materium>> GetMaterium(int id)
         {
-            if (_context.Materia == null)
-            {
-                return NotFound();
-            }
+          if (_context.Materia == null)
+          {
+              return NotFound();
+          }
             var materium = await _context.Materia.FindAsync(id);
 
             if (materium == null)
@@ -100,26 +85,12 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Materium>> PostMaterium(Materium materium)
         {
-            if (_context.Materia == null)
-            {
-                return Problem("Entity set 'T5sContext.Materia'  is null.");
-            }
+          if (_context.Materia == null)
+          {
+              return Problem("Entity set 'T5sContext.Materia'  is null.");
+          }
             _context.Materia.Add(materium);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (MateriumExists(materium.IdMateria))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMaterium", new { id = materium.IdMateria }, materium);
         }

@@ -22,38 +22,40 @@ namespace T5S.Controllers
         }
 
         // GET: api/Estudiantes
-        //Cambios
-        //Diego
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EstudiantesMV>>> GetEstudiantes()
         {
-            if (_context.Estudiantes == null)
+            var estudiantes = await _context.Estudiantes
+                .Select(estudiante => new EstudiantesMV
+                {
+                    id = estudiante.IdEstudiante,
+                    Nombre = estudiante.NombreEst,
+                    Apellido = estudiante.ApellidoEst,
+                    TipoDocumento = estudiante.TipoDocumentoEst,
+                    Numero = estudiante.NumeroDocumentoEst,
+                    Estado = estudiante.Estado,
+                    Celular = estudiante.CelularEst,
+                    Correo = estudiante.CorreoEst,
+                })
+                .ToListAsync();
+
+            if (estudiantes == null || estudiantes.Count == 0)
             {
                 return NotFound();
             }
-            var query = from Estudiantes in await _context.Estudiantes.ToListAsync()
-                        join Login in await _context.Logins.ToListAsync() on Estudiantes.IdLogin equals Login.IdLogin
-                        select new EstudiantesMV
-                        {
-                            NombreEst = Estudiantes.NombreEst,
-                            ApellidoEst = Estudiantes.ApellidoEst,
-                            TipoDocumento = Estudiantes.TipoDocumentoEst,
-                            Correo = Estudiantes.CorreoEst,
-                            Celular = Estudiantes.CelularEst,
-                            Estado = Estudiantes.Estado
-                        };
-            return query.ToList();
-            //return await _context.Estudiantes.ToListAsync();
+
+            return estudiantes;
         }
 
         // GET: api/Estudiantes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Estudiante>> GetEstudiante(int id)
         {
-            if (_context.Estudiantes == null)
-            {
-                return NotFound();
-            }
+          if (_context.Estudiantes == null)
+          {
+              return NotFound();
+          }
             var estudiante = await _context.Estudiantes.FindAsync(id);
 
             if (estudiante == null)
@@ -100,26 +102,12 @@ namespace T5S.Controllers
         [HttpPost]
         public async Task<ActionResult<Estudiante>> PostEstudiante(Estudiante estudiante)
         {
-            if (_context.Estudiantes == null)
-            {
-                return Problem("Entity set 'T5sContext.Estudiantes'  is null.");
-            }
+          if (_context.Estudiantes == null)
+          {
+              return Problem("Entity set 'T5sContext.Estudiantes'  is null.");
+          }
             _context.Estudiantes.Add(estudiante);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (EstudianteExists(estudiante.IdEstudiante))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEstudiante", new { id = estudiante.IdEstudiante }, estudiante);
         }

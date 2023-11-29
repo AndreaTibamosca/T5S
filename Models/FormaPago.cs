@@ -7,11 +7,9 @@ public partial class FormaPago
 {
     public int IdPago { get; set; }
 
-    public string TipoPago { get; set; } = null!;
+    public string? TipoPago { get; set; }
 
     public int ValoraPagar { get; set; }
 
     public string? Estado { get; set; }
-
-    public virtual ResevarTutorium? ResevarTutorium { get; set; }
 }

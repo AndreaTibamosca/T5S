@@ -7,17 +7,13 @@ public partial class Materium
 {
     public int IdMateria { get; set; }
 
-    public string NombreMateria { get; set; } = null!;
+    public string? NombreMateria { get; set; }
 
-    public string CostoMateria { get; set; } = null!;
+    public string? CostoMateria { get; set; }
 
-    public string PruebaMateria { get; set; } = null!;
+    public string? PruebaMateria { get; set; }
 
     public int IdTutorMateria { get; set; }
 
     public string? Estado { get; set; }
-
-    public virtual ResevarTutorium? ResevarTutorium { get; set; }
-
-    public virtual TutorMaterium? TutorMaterium { get; set; }
 }

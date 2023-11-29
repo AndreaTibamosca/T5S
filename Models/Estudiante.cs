@@ -7,31 +7,27 @@ public partial class Estudiante
 {
     public int IdEstudiante { get; set; }
 
-    public string NombreEst { get; set; } = null!;
+    public string? NombreEst { get; set; }
 
-    public string ApellidoEst { get; set; } = null!;
+    public string? ApellidoEst { get; set; }
 
     public DateTime FechaNacimientoEst { get; set; }
 
-    public string TipoDocumentoEst { get; set; } = null!;
+    public string? TipoDocumentoEst { get; set; }
 
     public int NumeroDocumentoEst { get; set; }
 
     public int CelularEst { get; set; }
 
-    public string CorreoEst { get; set; } = null!;
+    public string? CorreoEst { get; set; }
 
     public string DireccionEst { get; set; } = null!;
 
-    public string NombreUsuarioEst { get; set; } = null!;
+    public string? NombreUsuarioEst { get; set; }
 
-    public string PasswordEst { get; set; } = null!;
+    public string? PasswordEst { get; set; }
 
     public int IdLogin { get; set; }
 
     public string? Estado { get; set; }
-
-    public virtual Login? Login { get; set; }
-
-    public virtual ResevarTutorium? ResevarTutorium { get; set; }
 }
