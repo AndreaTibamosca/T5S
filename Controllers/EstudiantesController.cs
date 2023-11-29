@@ -21,7 +21,7 @@ namespace T5S.Controllers
             _context = context;
         }
 
-        // GET: api/Estudiantes
+        // GET: api/Estudiantess
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EstudiantesMV>>> GetEstudiantes()
