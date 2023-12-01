@@ -2,14 +2,12 @@
 {
     public class GeografiaMV
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
 
-        public string Ciudad { get; set; } = null!;
+        public string? Ciudad { get; set; }
 
-        public string Pais { get; set; } = null!;
+        public string? Pais { get; set; }
 
-        public string Barrio { get; set; } = null!;
-
-        public string Estado { get; set; } = null!;
+        public string? Estado { get; set; }
     }
 }
