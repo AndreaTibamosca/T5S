@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelsView;
 
 namespace T5S.Controllers
 {
@@ -22,13 +23,31 @@ namespace T5S.Controllers
 
         // GET: api/ResevarTutoriums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ResevarTutorium>>> GetResevarTutoria()
+        public async Task<ActionResult<IEnumerable<ReservaTutoriaMV>>> GetResevarTutoria()
         {
           if (_context.ResevarTutoria == null)
           {
               return NotFound();
           }
-            return await _context.ResevarTutoria.ToListAsync();
+            var query = from ResevarTutorium in await _context.ResevarTutoria.ToListAsync()
+                        where ResevarTutorium.Estado == 1
+
+                        select new ReservaTutoriaMV
+                        {
+                            Id = ResevarTutorium.IdReserva,
+                            FechaTutoria = ResevarTutorium.FechaTutoria,
+                            HoraTutoria = ResevarTutorium.HoraTutoria,
+                            CantidadHoras = ResevarTutorium.CantidadHoras,
+                            Localidad = ResevarTutorium.Localidad,
+                            Barrio = ResevarTutorium.Barrio,
+                            DireccionTutoria = ResevarTutorium.DireccionTutoria,
+                            TipoTutoria = ResevarTutorium.TipoTutoria,
+                            DescripcionTutoria = ResevarTutorium.DescripcionTutoria,
+                            Estado = ResevarTutorium.Estado,
+
+
+                        };
+            return query.ToList();
         }
 
         // GET: api/ResevarTutoriums/5

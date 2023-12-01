@@ -6,13 +6,11 @@ namespace T5S.ModelsView
     {
         public int Id { get; set; }
 
-        public string NombreRepositorio { get; set; } = null!;
+        public string? NombreRepositorio { get; set; }
 
-        public string NombreTutor { get; set; } = null!;
+        public string? MediosRepositorio { get; set; }
 
-        public string MediosRepositorio { get; set; } = null!;
-
-        public string Estado { get; set; } = null!;
+        public string? Estado { get; set; }
 
     }
 }

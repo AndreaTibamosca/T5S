@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T5S.Models;
+using T5S.ModelsView;
 
 namespace T5S.Controllers
 {
@@ -22,13 +23,23 @@ namespace T5S.Controllers
 
         // GET: api/Repositorios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Repositorio>>> GetRepositorios()
+        public async Task<ActionResult<IEnumerable<RepositorioMV>>> GetRepositorios()
         {
           if (_context.Repositorios == null)
           {
               return NotFound();
           }
-            return await _context.Repositorios.ToListAsync();
+            var query = from Repositorio in await _context.Repositorios.ToListAsync()
+                        where Repositorio.Estado == "Activo"
+                        select new RepositorioMV
+                        {
+                            Id = Repositorio.IdRepositorio,
+                            NombreRepositorio = Repositorio.IdNombreRepositorio,
+                            MediosRepositorio = Repositorio.MediosRepositorio,
+                            Estado = Repositorio.Estado
+
+                        };
+            return query.ToList();
         }
 
         // GET: api/Repositorios/5
